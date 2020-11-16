@@ -1,0 +1,12 @@
+name: Build Image
+
+on: [pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build image
+        run: |
+          docker build . --build-arg GITHUB_REGISTRATION_TOKEN=${{ secrets.REGISTRATION_TOKEN }} --build-arg GITHUB_SCOPE=jcayzac/github-runner-ubuntu
